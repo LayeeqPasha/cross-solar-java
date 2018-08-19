@@ -1,0 +1,56 @@
+1. Register a Panel Service. Post Service
+
+URL : http://localhost:8080/api/register
+Request Type: POST
+Request Body:
+{
+  "id":2, 
+  "serial":"1234567890123457", 
+  "longitude":52.104394 , 
+  "latitude":18.999671, 
+  "brand":"tesla"
+}
+Response: 200 Successful 
+
+2. Register Hourly Electricity. Post Service
+
+URL : http://localhost:8080/api/panels/1234567890123457/hourly
+Request Type: POST
+Request Body:
+ {
+   "id":6, 
+   "panelId":2,
+    "generatedElectricity":100,
+    "readingAt":[  
+      2017,
+      1,
+      1,
+      10,
+      24
+   ]
+ }
+Response: 200 Successful 
+
+3. Get Hourly Electricity from Previous dates
+
+URL : http://localhost:8080/api/panels/1234567890123457/daily
+Request Type: GET
+
+Response: 
+
+[
+  {
+"date": "2018-01-01",
+"sum": 360,
+"average": 120,
+"min": 120,
+"max": 120
+},
+  {
+"date": "2017-01-01",
+"sum": 100,
+"average": 100,
+"min": 100,
+"max": 100
+}
+],

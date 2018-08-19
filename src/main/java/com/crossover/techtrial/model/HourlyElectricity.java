@@ -30,12 +30,16 @@ public class HourlyElectricity implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
   
+  /*
   @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "panel_id", referencedColumnName = "id")
-  Panel panel;
+  Panel panel; */
   
-  @Column(name = "generated_electricity")
+  @Column(name = "panel_id")
+  Long panelId;
+
+@Column(name = "generated_electricity")
   Long generatedElectricity;
   
   @Column(name = "reading_at")
@@ -49,13 +53,21 @@ public class HourlyElectricity implements Serializable {
     this.id = id;
   }
 
-  public Panel getPanel() {
+ /* public Panel getPanel() {
     return panel;
   }
 
   public void setPanel(Panel panel) {
     this.panel = panel;
-  }
+  } */
+  
+  public Long getPanelId() {
+		return panelId;
+	}
+
+	public void setPanelId(Long panelId) {
+		this.panelId = panelId;
+	}
 
   public Long getGeneratedElectricity() {
     return generatedElectricity;
@@ -122,7 +134,7 @@ public class HourlyElectricity implements Serializable {
    */
   @Override
   public String toString() {
-    return "HourlyElectricity [id=" + id + ", panel=" + panel + ", generatedElectricity="
+    return "HourlyElectricity [id=" + id + ", panelId=" + panelId + ", generatedElectricity="
         + generatedElectricity + ", readingAt=" + readingAt + "]";
   }
   

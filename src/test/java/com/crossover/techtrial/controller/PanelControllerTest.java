@@ -1,6 +1,10 @@
 package com.crossover.techtrial.controller;
 
+import com.crossover.techtrial.dto.DailyElectricity;
 import com.crossover.techtrial.model.Panel;
+
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -50,9 +54,10 @@ public class PanelControllerTest {
             + " \"latitude\": \"54.123232\",\"brand\":\"tesla\" }");
     ResponseEntity<Panel> response = template.postForEntity(
         "/api/register", panel, Panel.class);
+    
     Assert.assertEquals(202,response.getStatusCode().value());
   }
-
+  
   private HttpEntity<Object> getHttpEntity(Object body) {
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_JSON);
